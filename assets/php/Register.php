@@ -3,12 +3,16 @@
 session_start();
 header('Content-Type: application/json; charset=utf-8');
 
-// // CSRF Protection
-// if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'] ?? '', $_POST['csrf_token'])) {
-//     // For backward compatibility, allow requests without CSRF token for now
-//     // In production, uncomment the line below:
-//     // http_response_code(403); echo json_encode(['success' => false, 'message' => 'Token CSRF inválido']); exit;
-// }
+// Habilitar exibição de erros para debug
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Log de requisição
+error_log("=== INÍCIO DO REGISTRO ===");
+error_log("Método: " . $_SERVER['REQUEST_METHOD']);
+error_log("POST data: " . print_r($_POST, true));
+error_log("FILES data: " . print_r($_FILES, true));
 
 // Rate limiting (simple implementation)
 $ip = $_SERVER['REMOTE_ADDR'];
@@ -22,6 +26,7 @@ if (time() - $_SESSION[$rate_limit_key]['time'] > 3600) {
 }
 
 if ($_SESSION[$rate_limit_key]['count'] > 50) {
+    error_log("Rate limit excedido para IP: " . $ip);
     http_response_code(429);
     echo json_encode(['success' => false, 'message' => 'Muitas tentativas. Tente novamente em 1 hora.']);
     exit;
@@ -33,12 +38,15 @@ $_SESSION[$rate_limit_key]['count']++;
 require_once 'Config.php';
 
 try {
-    $conn = new mysqli($servername, $username, $password, $database);
+    error_log("Tentando conectar ao banco de dados...");
+    $conn = new mysqli($servername, $username, $password, $database, $port);
     $conn->set_charset("utf8mb4");
     
     if ($conn->connect_error) {
-        throw new Exception("Falha na conexão com o banco de dados");
+        error_log("Erro na conexão com o banco: " . $conn->connect_error);
+        throw new Exception("Falha na conexão com o banco de dados: " . $conn->connect_error);
     }
+    error_log("Conexão com o banco estabelecida com sucesso");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Validação de entrada
@@ -46,6 +54,7 @@ try {
         
         // Validar nome
         $nome = trim($_POST["nome"] ?? '');
+        error_log("Nome recebido: " . $nome);
         if (empty($nome)) {
             $errors[] = "Nome é obrigatório";
         } elseif (strlen($nome) < 2) {
@@ -56,6 +65,7 @@ try {
         
         // Validar email
         $email = filter_var($_POST["email"] ?? '', FILTER_SANITIZE_EMAIL);
+        error_log("Email recebido: " . $email);
         if (empty($email)) {
             $errors[] = "E-mail é obrigatório";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -64,25 +74,35 @@ try {
         
         // Verificar se email já existe
         if (!empty($email)) {
+            error_log("Verificando se email já existe: " . $email);
             $stmt = $conn->prepare("SELECT id FROM usuarios WHERE email = ?");
+            if (!$stmt) {
+                error_log("Erro ao preparar consulta de email: " . $conn->error);
+                throw new Exception("Erro ao preparar consulta: " . $conn->error);
+            }
             $stmt->bind_param("s", $email);
             $stmt->execute();
             if ($stmt->get_result()->num_rows > 0) {
                 $errors[] = "E-mail já cadastrado";
+                error_log("Email já cadastrado: " . $email);
             }
             $stmt->close();
         }
         
-        // Validar telefone
+        // Validar telefone (opcional)
         $telefone = trim($_POST["telefone"] ?? '');
-        if (empty($telefone)) {
-            $errors[] = "Telefone é obrigatório";
-        } elseif (!preg_match('/^\(\d{2}\)\s\d{4,5}-\d{4}$/', $telefone)) {
-            $errors[] = "Telefone inválido. Use o formato (11) 99999-9999";
+        error_log("Telefone recebido: " . $telefone);
+        if (!empty($telefone)) {
+            // Remove todos os caracteres não numéricos para validação
+            $telefone_numeros = preg_replace('/\D/', '', $telefone);
+            if (strlen($telefone_numeros) < 10 || strlen($telefone_numeros) > 11) {
+                $errors[] = "Telefone inválido. Use o formato (00) 00000-0000";
+            }
         }
         
         // Validar gênero
         $genero = trim($_POST["genero"] ?? '');
+        error_log("Gênero recebido: " . $genero);
         $generos_validos = ['Masculino', 'Feminino', 'Outro'];
         if (empty($genero)) {
             $errors[] = "Gênero é obrigatório";
@@ -92,6 +112,7 @@ try {
         
         // Validar data de nascimento
         $datanascimento = $_POST["datanascimento"] ?? '';
+        error_log("Data de nascimento recebida: " . $datanascimento);
         if (empty($datanascimento)) {
             $errors[] = "Data de nascimento é obrigatória";
         } else {
@@ -105,6 +126,7 @@ try {
         
         // Validar cidade
         $cidade = trim($_POST["cidade"] ?? '');
+        error_log("Cidade recebida: " . $cidade);
         if (empty($cidade)) {
             $errors[] = "Cidade é obrigatória";
         } elseif (strlen($cidade) < 2) {
@@ -113,6 +135,7 @@ try {
         
         // Validar estado
         $estado = trim($_POST["estado"] ?? '');
+        error_log("Estado recebido: " . $estado);
         if (empty($estado)) {
             $errors[] = "Estado é obrigatório";
         } elseif (strlen($estado) < 2) {
@@ -121,6 +144,7 @@ try {
         
         // Validar endereço
         $endereco = trim($_POST["endereco"] ?? '');
+        error_log("Endereço recebido: " . $endereco);
         if (empty($endereco)) {
             $errors[] = "Endereço é obrigatório";
         } elseif (strlen($endereco) < 5) {
@@ -129,6 +153,7 @@ try {
         
         // Validar senha
         $senha = $_POST["senha"] ?? '';
+        error_log("Senha recebida (tamanho): " . strlen($senha));
         if (empty($senha)) {
             $errors[] = "Senha é obrigatória";
         } elseif (strlen($senha) < 8) {
@@ -137,6 +162,7 @@ try {
         
         // Se há erros, retornar
         if (!empty($errors)) {
+            error_log("Erros de validação encontrados: " . print_r($errors, true));
             http_response_code(400);
             echo json_encode(['success' => false, 'errors' => $errors]);
             exit;
@@ -146,35 +172,35 @@ try {
         $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
         
         // Preparar inserção
+        error_log("Preparando inserção no banco de dados...");
         $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, telefone, genero, datanascimento, cidade, estado, endereco, senha, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+        if (!$stmt) {
+            error_log("Erro ao preparar inserção: " . $conn->error);
+            throw new Exception("Erro ao preparar inserção: " . $conn->error);
+        }
+        
         $stmt->bind_param("sssssssss", $nome, $email, $telefone, $genero, $datanascimento, $cidade, $estado, $endereco, $senha_hash);
         
         if ($stmt->execute()) {
             $user_id = $conn->insert_id;
-            
-            // Log da ação
-            error_log("Novo usuário cadastrado: ID {$user_id}, Email: {$email}, IP: {$ip}");
+            error_log("Usuário cadastrado com sucesso. ID: " . $user_id);
             
             // Reset rate limit counter on success
             $_SESSION[$rate_limit_key]['count'] = 0;
             
-            // Verificar se é uma requisição AJAX
-            if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-                echo json_encode([
-                    'success' => true, 
-                    'message' => 'Conta criada com sucesso!',
-                    'redirect' => 'login-new.html'
-                ]);
-            } else {
-                // Redirecionar para página de sucesso
-                header("Location: ../cadastro-new.html?sucesso=1");
-            }
+            echo json_encode([
+                'success' => true, 
+                'message' => 'Conta criada com sucesso!',
+                'redirect' => 'login-new.html'
+            ]);
             exit();
         } else {
-            throw new Exception("Erro ao cadastrar usuário");
+            error_log("Erro ao executar inserção: " . $stmt->error);
+            throw new Exception("Erro ao cadastrar usuário: " . $stmt->error);
         }
         
     } else {
+        error_log("Método não permitido: " . $_SERVER['REQUEST_METHOD']);
         http_response_code(405);
         echo json_encode(['success' => false, 'message' => 'Método não permitido']);
     }
@@ -182,7 +208,7 @@ try {
 } catch (Exception $e) {
     error_log("Erro no cadastro: " . $e->getMessage());
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Erro interno do servidor']);
+    echo json_encode(['success' => false, 'message' => 'Erro interno do servidor: ' . $e->getMessage()]);
 } finally {
     if (isset($stmt)) {
         $stmt->close();
@@ -190,5 +216,6 @@ try {
     if (isset($conn)) {
         $conn->close();
     }
+    error_log("=== FIM DO REGISTRO ===");
 }
 ?>

@@ -388,18 +388,16 @@
 
                             <div class="form-row form-row-2">
                                 <div class="form-group">
-                                    <label for="telefone" class="form-label">Telefone*</label>
+                                    <label for="telefone">Telefone (opcional)</label>
                                     <input 
                                         type="tel" 
                                         id="telefone" 
                                         name="telefone" 
-                                        class="form-input" 
-                                        placeholder="(11) 99999-9999"
-                                        required
-                                        autocomplete="tel"
+                                        placeholder="(00) 00000-0000" 
+                                        pattern="\(\d{2}\)\s\d{4,5}-\d{4}"
+                                        title="Digite um telefone válido no formato (00) 00000-0000"
                                         aria-describedby="telefone-error"
                                     >
-                                    <div id="telefone-error" class="form-error" role="alert"></div>
                                 </div>
 
                                 <div class="form-group">

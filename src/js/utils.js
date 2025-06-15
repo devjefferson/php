@@ -329,6 +329,37 @@ const a11y = {
   }
 };
 
+// Função para aplicar máscara no telefone
+function maskPhone(telefone) {
+    telefone.value = telefone.value.replace(/\D/g, ''); // Remove tudo que não é número
+    telefone.value = telefone.value.replace(/^(\d{2})(\d)/g, '($1) $2'); // Coloca parênteses em volta dos dois primeiros dígitos
+    telefone.value = telefone.value.replace(/(\d)(\d{4})$/, '$1-$2'); // Coloca hífen entre o quarto e o quinto dígitos
+}
+
+// Função para validar telefone
+function validatePhone(telefone) {
+    const phoneRegex = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
+    return phoneRegex.test(telefone);
+}
+
+// Função para inicializar máscaras
+function initMasks() {
+    const phoneInputs = document.querySelectorAll('input[type="tel"]');
+    phoneInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            maskPhone(this);
+        });
+        
+        // Aplica a máscara no valor inicial se existir
+        if (input.value) {
+            maskPhone(input);
+        }
+    });
+}
+
+// Inicializa as máscaras quando o documento estiver pronto
+document.addEventListener('DOMContentLoaded', initMasks);
+
 // Export utilities for global use
 window.utils = {
   $,

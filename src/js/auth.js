@@ -81,12 +81,14 @@ class AuthManager {
       // Mostrar loading
       this.showLoading();
       
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('senha', senha);
+      formData.append('remember', remember);
+      
       const response = await fetch(this.apiEndpoints.login, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, senha, remember })
+        body: formData
       });
       
       const data = await response.json();
@@ -98,11 +100,12 @@ class AuthManager {
         localStorage.setItem('userInfo', JSON.stringify(data.user));
         
         // Redirecionar para a página inicial
-        window.location.href = 'home.html';
+        window.location.href = data.redirect || 'home.html';
       } else {
         this.showError(data.message || 'Erro ao fazer login. Verifique suas credenciais.');
       }
     } catch (error) {
+      console.error('Login error:', error);
       this.showError('Erro ao conectar com o servidor. Tente novamente mais tarde.');
     } finally {
       this.hideLoading();
