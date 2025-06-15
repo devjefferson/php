@@ -23,7 +23,7 @@ $sucesso = isset($_GET['sucesso']) && $_GET['sucesso'] == 1;
             <h2>Ops... algo deu errado!</h2>
             <p>Você acessou essa página sem se cadastrar corretamente.</p>
         </div>
-        <a href="assets/login.html">ir para o login</a>
+        <a href="assets/login-new.html">ir para o login</a>
     <?php endif; ?>
 
 </body>

@@ -145,7 +145,7 @@ class AuthManager {
         utils.showAlert('Conta criada com sucesso! Redirecionando para o login...', 'success');
         
         setTimeout(() => {
-          window.location.href = 'login.html';
+          window.location.href = 'login-new.html';
         }, 2000);
         
       } else if (result.includes('já existe') || result.includes('já cadastrado')) {
