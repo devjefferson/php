@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+   
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 25px;
+    width: 100%;
+}
+.horizontal-sidebars{
+    display:flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.dropdown-content {
+    display: none; /* Esconde o dropdown por padrão */
+    position: absolute; /* Faz o dropdown se sobrepor */
+    background-color: #f70606;
+    min-width: 160px; /* Largura mínima do dropdown */
+    z-index: 1; /* Para garantir que fique acima de outros elementos */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Exibe o dropdown ao passar o mouse */
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #575757; /* Cor ao passar o mouse no dropdown */
+}

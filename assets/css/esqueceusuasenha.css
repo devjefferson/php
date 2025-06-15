@@ -1,0 +1,65 @@
+body {
+    font-family: "Fredoka", sans-serif;
+    margin: 0;
+    padding: 0px;
+    background-color: #fcfcfc;
+    display: flex;
+    align-items: center;
+    background-image: url('./fundo\ tela\ de\ login.png'); /* Caminho da imagem */
+    background-size: cover; /* Faz com que a imagem cubra todo o elemento */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    height: 100vh; /* Define a altura do main para 100% da altura da viewport */
+    color: white; /* Cor do texto para melhor contraste */
+    display: flex; /* Para centralizar o conteúdo, se necessário */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+}
+.container  {
+    background-color: #e9e9e9;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    gap: 20px;
+    margin: 200px;;
+    align-items: center; /* Centraliza os inputs dentro da box */
+}
+h1{
+    display: flex;
+    justify-content: center;
+    color: rgb(30, 138, 226);
+    font-family: "Fredoka", sans-serif;
+}
+p{
+    padding: 0%;
+    margin: auto;
+    color: rgb(30, 138, 226);
+
+}
+.enviar{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 25px;
+    border: none;
+    color: #ffff;
+    background-color: rgb(112, 171, 230);
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 200px;
+}
+.enviar:active{
+    background-color:  rgb(61, 91, 120);
+}
+.inputemail {
+    width: 100%; /* Largura total do container pai */
+    max-width: 280px; /* Largura máxima desejada */
+    padding: 10px; /* Padding consistente */
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    font-size: 15px;
+    border: 1px solid #cac8c8e7;
+    margin-left: 0;
+}

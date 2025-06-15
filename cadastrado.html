@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo ao meu site</title>
+    <link rel="stylesheet" href="assets/css/cadastrado.css">
+    <script>
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get("sucesso") === "1") {
+                document.getElementById("mensagem").innerHTML = "<p class='sucesso'>Cadastro realizado com sucesso!</p>";
+                document.getElementById("formulario").reset(); // Limpa os campos do formulário
+                document.getElementById("botaoLogin").style.display = "block"; // Exibe o botão de login
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="box">
+        <!-- Mensagem de sucesso -->
+        <div id="mensagem"></div>
+
+        <form id="formulario" action="assets/php/Register.php" method="POST">
+            <input type="text" name="nome" placeholder="Digite seu Nome Completo..." required>
+            <input type="email" name="email" placeholder="Digite seu Email..." required>
+            <input type="text" name="telefone" placeholder="Digite seu Telefone..." required>
+            <input type="radio" name="genero" value="Masculino" required> Masculino
+            <input type="radio" name="genero" value="Feminino" required> Feminino
+            <input type="radio" name="genero" value="Outro" required> Outro
+            <input type="date" name="datanascimento" required>
+            <input type="text" name="cidade" placeholder="Digite sua Cidade..." required>
+            <input type="text" name="estado" placeholder="Digite seu Estado..." required>
+            <input type="text" name="endereco" placeholder="Digite seu Endereço..." required>
+            <input type="password" name="senha" placeholder="Digite sua Senha..." required>
+            <input type="submit" value="Cadastrar">
+        </form>
+
+        <!-- Botão para retornar à tela de login -->
+        <button id="botaoLogin" onclick="window.location.href='login.html'" style="display: none;">Ir para Login</button>
+    </div>
+</body>
+</html>

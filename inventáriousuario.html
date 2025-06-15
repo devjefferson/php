@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Inventário - Azzo</title>
+    <link rel="stylesheet" href="inventário.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Seu Inventário</h1>
+        <a href="./home.html" class="cta">
+            <i class="fas fa-plus"></i> Adquira mais Conhecimento
+        </a>
+    </header>
+
+    <!-- Corpo da Página -->
+    <main>
+        <section class="user-info">
+            <h2>Bem-vindo ao seu Inventário de E-books</h2>
+            <p>Confira os e-books que você possui e continue sua jornada de aprendizado!</p>
+            
+            <!-- Barra de Pesquisa -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Pesquisar e-books...">
+                <button type="button" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            
+            <!-- Filtros -->
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="programacao">Programação</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="negocios">Negócios</button>
+            </div>
+        </section>
+
+        <section class="inventory">
+            <h2>E-books Disponíveis</h2>
+            <div class="inventory-list">
+                <!-- E-book 1 -->
+                <div class="item" data-category="programacao">
+                    <div class="item-badge">Novo</div>
+                    <img src="assets/imagens/Csharp.jpg" alt="Capa do E-book C#" />
+                    <div class="item-content">
+                        <h3>Curso Completo de C#</h3>
+                        <p><strong>Autor:</strong> Microsoft</p>
+                        <p class="item-description">Aprenda C# do zero com este eBook completo! Ideal para quem deseja entrar no desenvolvimento de aplicações desktop, jogos com Unity ou sistemas corporativos com .NET.</p>
+                        <div class="item-footer">
+                            <span class="progress">Progresso: 75%</span>
+                            <a href="Csharp.html" class="btn">Continuar Leitura</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-book 2 -->
+                <div class="item" data-category="programacao">
+                    <img src="assets/imagens/java.jpg" alt="Capa do E-book Java" />
+                    <div class="item-content">
+                        <h3>Curso Completo de Java</h3>
+                        <p><strong>Autor:</strong> Oracle</p>
+                        <p class="item-description">Aprenda Java, uma das linguagens mais utilizadas no mundo corporativo, com este eBook completo. Do básico à orientação a objetos, estrutura de dados, e desenvolvimento de aplicações.</p>
+                        <div class="item-footer">
+                            <span class="progress">Progresso: 30%</span>
+                            <a href="Java.html" class="btn">Continuar Leitura</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- E-book 3 -->
+                <div class="item" data-category="frontend">
+                    <div class="item-badge">Popular</div>
+                    <img src="assets/imagens/frontend.jpg" alt="Capa do E-book Frontend" />
+                    <div class="item-content">
+                        <h3>Curso Completo de Frontend</h3>
+                        <p><strong>Autor:</strong> Web Dev Team</p>
+                        <p class="item-description">Aprenda a criar páginas e interfaces web modernas e responsivas com este eBook completo de Frontend. O material abrange HTML, CSS, JavaScript e frameworks modernos.</p>
+                        <div class="item-footer">
+                            <span class="progress">Progresso: 90%</span>
+                            <a href="Frontend.html" class="btn">Continuar Leitura</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quem Somos</h3>
+                <p>
+                    A Azzo é uma plataforma dedicada a transformar o aprendizado online com os melhores cursos do mercado.
+                    Nossa missão é capacitar pessoas a alcançar o seu potencial máximo através do conhecimento.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="#">Sobre Nós</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos de Uso</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Redes Sociais</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Azzo Cursos Online. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="src/js/utils.js"></script>
+    <script src="src/js/auth.js"></script>
+    <script src="src/js/auth-ui.js"></script>
+    <script>
+        // Funcionalidade de pesquisa
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.item');
+            
+            items.forEach(item => {
+                const title = item.querySelector('h3').textContent.toLowerCase();
+                const description = item.querySelector('.item-description').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Funcionalidade de filtros
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                const items = document.querySelectorAll('.item');
+                
+                items.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Verificar se o usuário está logado
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                window.location.href = 'login-new.html';
+            }
+        });
+    </script>
+</body>
+</html>

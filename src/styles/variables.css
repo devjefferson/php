@@ -1,0 +1,133 @@
+/* Variáveis de Design System - Azzo */
+:root {
+  /* Cores Primárias */
+  --primary-color: #007BFF;
+  --primary-dark: #0056b3;
+  --primary-light: #66b3ff;
+  
+  /* Cores Secundárias */
+  --secondary-color: #00A8FF;
+  --secondary-dark: #0077cc;
+  --secondary-light: #33baff;
+  
+  /* Cores Neutras */
+  --white: #ffffff;
+  --gray-50: #f9f9f9;
+  --gray-100: #f1f1f1;
+  --gray-200: #e9e9e9;
+  --gray-300: #ccc;
+  --gray-400: #999;
+  --gray-500: #666;
+  --gray-600: #555;
+  --gray-700: #333;
+  --gray-800: #222;
+  --gray-900: #111;
+  --black: #000000;
+  
+  /* Cores de Status */
+  --success: #28a745;
+  --success-light: #d4edda;
+  --warning: #ffc107;
+  --warning-light: #fff3cd;
+  --error: #dc3545;
+  --error-light: #f8d7da;
+  --info: #17a2b8;
+  --info-light: #d1ecf1;
+  
+  /* Tipografia */
+  --font-primary: 'Fredoka', system-ui, -apple-system, sans-serif;
+  --font-secondary: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Tamanhos de Fonte */
+  --font-xs: 0.75rem;    /* 12px */
+  --font-sm: 0.875rem;   /* 14px */
+  --font-base: 1rem;     /* 16px */
+  --font-lg: 1.125rem;   /* 18px */
+  --font-xl: 1.25rem;    /* 20px */
+  --font-2xl: 1.5rem;    /* 24px */
+  --font-3xl: 1.875rem;  /* 30px */
+  --font-4xl: 2.25rem;   /* 36px */
+  --font-5xl: 3rem;      /* 48px */
+  
+  /* Peso da Fonte */
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  
+  /* Espaçamentos */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  
+  /* Bordas */
+  --radius-sm: 0.25rem;  /* 4px */
+  --radius-md: 0.5rem;   /* 8px */
+  --radius-lg: 0.75rem;  /* 12px */
+  --radius-xl: 1rem;     /* 16px */
+  --radius-2xl: 1.5rem;  /* 24px */
+  --radius-full: 9999px;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* Transições */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+  
+  /* Breakpoints */
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1536px;
+  
+  /* Z-index */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  
+  /* Layout */
+  --container-max-width: 1200px;
+  --header-height: 80px;
+  --sidebar-width: 280px;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --primary-color: #4a9eff;
+  --primary-dark: #2e7adb;
+  --primary-light: #7bb8ff;
+  
+  --white: #1a1a1a;
+  --gray-50: #2a2a2a;
+  --gray-100: #3a3a3a;
+  --gray-200: #4a4a4a;
+  --gray-300: #6a6a6a;
+  --gray-400: #8a8a8a;
+  --gray-500: #aaa;
+  --gray-600: #bbb;
+  --gray-700: #ddd;
+  --gray-800: #eee;
+  --gray-900: #f9f9f9;
+  --black: #ffffff;
+}

@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fredoka', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7fa;
+}
+
+/* Estilos para o contêiner do formulário */
+.box {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.box h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 1.5rem;
+    color: #333333;
+}
+
+/* Estilos para os campos de entrada */
+.box input[type="text"],
+.box input[type="email"],
+.box input[type="password"],
+.box input[type="date"],
+.box input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Estilos específicos para os botões de rádio */
+.box input[type="radio"] {
+    margin: 0 5px 0 0;
+}
+
+/* Estilos para os rótulos de opções de gênero */
+.box input[type="radio"] + label {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #333333;
+}
+
+/* Estilos para o botão de envio */
+.box input[type="submit"] {
+    background-color: #00A8FF;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.box input[type="submit"]:hover {
+    background-color: #333333;
+}

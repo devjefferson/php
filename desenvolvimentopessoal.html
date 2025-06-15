@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azzo - Cursos Online</title>
+    <link rel="stylesheet" href="assets/css/desenvolvimentopessoal.css">
+</head>
+<body class="light-mode">
+    <!-- Header -->
+    <header>
+        <div class="search-bar">
+            <input type="text" placeholder="Pesquisar Conhecimento...">
+        </div>
+        <img src="logo alternativa.png" id="alternativo">
+        <div class="auth-buttons">
+            <button id="home"><a href="./Hometest.html">Home</a></button>
+            <button id="login-btn"><a href="./login.html">Entrar</a></button>
+            <button id="register-btn"><a href="./Cadastro.html">Cadastrar-se</a></button>
+        </div>
+    </header>
+    <!-- Sessão de Cursos -->
+    <section class="courses">
+        <h2>Cursos de Programaçao</h2>
+        <div class="course-list">
+            <div class="course-item">
+                <img src="python.png" alt="Curso 1" width="200px" height="200px">
+                <h3>Curso de Python</h3>
+                <p>Aprenda Python da forma mais facil possivel.</p>
+                <button>Ver Detalhes</button>
+            </div>
+            <div class="course-item">
+                <img src="Java.jpg" alt="Curso 2" width="200px" height="200px">
+                <h3>Curso de Java</h3>
+                <p>Aprenda Java com profissionais da area.</p>
+                <button>Ver Detalhes</button>
+            </div>
+            <div class="course-item">
+                <img src="Csharp.png" alt="Curso 3" width="200px" height="200px">
+                <h3>Curso C#</h3>
+                <p>Aprenda C# em apenas 3 meses.</p>
+                <button>Ver Detalhes</button>
+            </div>
+            <div class="course-item">
+                <img src="C.png" alt="Curso 4" width="200px" height="200px">
+                <h3>Curso de C</h3>
+                <p>Aprenda a linguagem base do mercado.</p>
+                <button>Ver Detalhes</button>
+            </div>
+            <div class="course-item">
+                <img src="Frontend.jpg" alt="Curso 5" width="200px" height="200px">
+                <h3>Curso Front End</h3>
+                <p>Aprenda a desenvolver as telas de seu site.</p>
+                <button><a href="paginadeproduto.html">Ver Detalhes</a></button>
+            </div>
+            <div class="course-item">
+                <img src="Javascript.png" alt="Curso 6" width="200px" height="200px">
+                <h3>Curso de Javascript </h3>
+                <p>Desenvolva o back end de seu site.</p>
+                <button>Ver Detalhes</button>
+            </div>
+        
+            <!-- Adicione mais itens de curso aqui -->
+        </div>
+    </section>
+
+    <!-- Modal de Cadastro -->
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-register">&times;</span>
+            <h2>Cadastro</h2>
+            <form id="register-form">
+                <label for="register-name">Nome:</label>
+                <input type="text" id="register-name" name="name" required>
+                
+                <label for="register-email">E-mail:</label>
+                <input type="email" id="register-email" name="email" required>
+                
+                <label for="register-password">Senha:</label>
+                <input type="password" id="register-password" name="password" required>
+                
+                <button type="submit">Cadastrar-se</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Login -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-login">&times;</span>
+            <h2>Entrar</h2>
+            <form id="login-form">
+                <label for="login-email">E-mail:</label>
+                <input type="email" id="login-email" name="email" required>
+                
+                <label for="login-password">Senha:</label>
+                <input type="password" id="login-password" name="password" required>
+                
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 AzzO. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

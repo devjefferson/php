@@ -1,0 +1,201 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s; /* Transição suave */
+    overflow: auto; /* Permite rolagem */
+}
+body::-webkit-scrollbar {
+    display: none; /* Para navegadores WebKit (Chrome, Safari) */
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0977df;
+    padding: 30px;
+    color: white;
+}
+.horizontal-sidebar {
+    display: flex;
+    justify-content: center; /* Centraliza os itens */
+    background-color: #ffffff; /* Cor de fundo da barra de navegação */
+    padding: 15px 0; /* Espaçamento vertical */
+    box-shadow: 8px 2px 30px 10px #121212;
+}
+
+.horizontal-sidebar ul {
+    list-style: none; /* Remove marcadores da lista */
+    padding: 0; /* Remove preenchimento */
+    margin: 0; /* Remove margem */
+    display: flex; /* Alinha os itens em linha */
+}
+
+.horizontal-sidebar li {
+    position: relative; /* Necessário para o dropdown */
+    margin: 0 20px; /* Espaçamento horizontal entre os itens */
+}
+
+.horizontal-sidebar a {
+    color: rgb(3, 3, 3);
+    text-decoration: none; /* Remove sublinhado */
+    padding: 10px 15px; /* Espaçamento interno */
+    transition: background-color 0.3s; /* Transição suave */
+    border-radius: 25px;
+}
+
+.horizontal-sidebar a:hover {
+    background-color: #72a2ce; /* Cor ao passar o mouse */
+    border-radius: 25px;
+}
+
+.dropdown-content {
+    display: none; /* Esconde o dropdown por padrão */
+    position: absolute; /* Faz o dropdown se sobrepor */
+    background-color: #0977df;
+    min-width: 160px; /* Largura mínima do dropdown */
+    z-index: 1; /* Para garantir que fique acima de outros elementos */
+    opacity: 0; /* Começa invisível */
+    transform: translateY(-10px); /* Move para cima inicialmente */
+    border-radius: 25px;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transições suaves para opacidade e transformação */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Exibe o dropdown ao passar o mouse */
+    opacity: 1; /* Torna visível */
+    transform: translateY(0); /* Volta à posição original */
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    opacity: 0; /* Começa invisível */
+    transform: translateY(10px); /* Move para baixo inicialmente */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transições suaves */
+}
+
+.dropdown:hover .dropdown-content a {
+    opacity: 1; /* Torna visível */
+    transform: translateY(0); /* Volta à posição original */
+}
+
+/* Adicionando um atraso para cada elemento */
+.dropdown-content a:nth-child(1) { transition-delay: 0s; }
+.dropdown-content a:nth-child(2) { transition-delay: 0.1s; }
+.dropdown-content a:nth-child(3) { transition-delay: 0.2s; }
+.dropdown-content a:nth-child(4) { transition-delay: 0.3s; }
+.dropdown-content a:nth-child(5) { transition-delay: 0.4s; }
+.dropdown-content a:nth-child(6) { transition-delay: 0.5s; }
+
+.dropdown-content a:hover {
+    background-color: #575757; /* Cor ao passar o mouse no dropdown */
+}
+
+/* Estilos para foco */
+.dropdown-content a:focus {
+    outline: 2px solid #fff; /* Destaque para acessibilidade */
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 600px; /* Altura do carrossel */
+    box-shadow: 8px 2px 30px 5px #121212;
+}
+
+.carousel-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.courses {
+    padding: 20px;
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.course-card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para foco */
+.dropdown-content a:focus {
+    outline: 2px solid #fff; /* Destaque para acessibilidade */
+}
+
+/* Modo Escuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+header.dark-mode {
+    background-color: #1f1f1f;
+}
+
+.dropdown-content.dark-mode {
+    background-color: #0977df;;
+}
+
+.course-card.dark-mode {
+    background-color: #333;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Empilha os itens em telas menores */
+    }
+}
+footer{
+    background-color: #0977df;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.card-container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateX(100%); /* Inicia fora da tela à direita */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.card.active {
+    opacity: 1;
+    transform: translateX(0); /* Centraliza o card ativo */
+}
+
+.card.slide-out {
+    opacity: 0;
+    transform: translateX(-100%); /* Move o card atual para fora da tela à esquerda */
+}
+.blacktext{
+    background-color: #000000;
+    color: #fff;
+}

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar - Azzo Cursos Online</title>
+    <meta name="description" content="Faça login na plataforma Azzo e acesse os melhores cursos online do mercado.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="src/styles/base.css">
+    <link rel="stylesheet" href="src/styles/components.css">
+    <link rel="stylesheet" href="src/styles/login.css">
+     <link rel="stylesheet" href="src/styles/cursos.css">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/imagens/favicon.ico">
+    
+    <!-- Preconnect para fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class="login-page">
+    <!-- Header Simples -->
+     <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <a href="home.html" class="logo-link">
+                        <img src="assets/imagens/logofundotransparente.png" alt="Azzo" class="logo">
+                    </a>
+                    
+                    <!-- Search -->
+                    <div class="search-container">
+                        <form class="search-form" role="search">
+                            <input 
+                                type="search" 
+                                class="search-input" 
+                                placeholder="Buscar cursos de programação..."
+                                aria-label="Buscar cursos"
+                                id="search-input"
+                            >
+                            <button type="submit" class="search-button" aria-label="Pesquisar">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                    <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                        </form>
+                        
+                        <!-- Search Results -->
+                        <div class="search-results" id="search-results" aria-live="polite"></div>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <!-- Navigation -->
+                    <nav class="main-nav hidden-mobile" aria-label="Navegação principal">
+                        <div class="nav-dropdown" id="programming-dropdown">
+                            <button class="nav-trigger" aria-expanded="false" aria-haspopup="true" id="programming-menu-btn">
+                                <span class="nav-icon">💻</span>
+                                Programação
+                                <svg class="nav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                            <div class="nav-dropdown-content" id="programming-menu">
+                                <div class="dropdown-header">
+                                    <h4>Linguagens de Programação</h4>
+                                    <p>Escolha sua linguagem favorita</p>
+                                </div>
+                                <div class="dropdown-grid">
+                                    <a href="programacao-new.html" class="nav-dropdown-item featured active">
+                                        <div class="item-icon">🎯</div>
+                                        <div class="item-content">
+                                            <span class="item-title">Todos os Cursos</span>
+                                            <span class="item-desc">Explore todas as opções</span>
+                                        </div>
+                                    </a>
+                                    <a href="Python.html" class="nav-dropdown-item">
+                                        <div class="item-icon">🐍</div>
+                                        <div class="item-content">
+                                            <span class="item-title">Python</span>
+                                            <span class="item-desc">Mais popular</span>
+                                        </div>
+                                        <span class="item-badge">Hot</span>
+                                    </a>
+                                    <a href="Java.html" class="nav-dropdown-item">
+                                        <div class="item-icon">☕</div>
+                                        <div class="item-content">
+                                            <span class="item-title">Java</span>
+                                            <span class="item-desc">Corporativo</span>
+                                        </div>
+                                    </a>
+                                    <a href="Csharp.html" class="nav-dropdown-item">
+                                        <div class="item-icon">🔷</div>
+                                        <div class="item-content">
+                                            <span class="item-title">C#</span>
+                                            <span class="item-desc">Microsoft</span>
+                                        </div>
+                                    </a>
+                                    <a href="Frontend.html" class="nav-dropdown-item">
+                                        <div class="item-icon">🎨</div>
+                                        <div class="item-content">
+                                            <span class="item-title">Frontend</span>
+                                            <span class="item-desc">Interface web</span>
+                                        </div>
+                                        <span class="item-badge">Novo</span>
+                                    </a>
+                                    <a href="Backend.html" class="nav-dropdown-item">
+                                        <div class="item-icon">⚙️</div>
+                                        <div class="item-content">
+                                            <span class="item-title">Backend</span>
+                                            <span class="item-desc">Servidor & APIs</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="dropdown-footer">
+                                    <a href="cadastro-new.html" class="dropdown-cta">
+                                        <span>Começar Agora</span>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                      
+                    </nav>
+                    
+                    <!-- Auth Buttons -->
+                    <div class="auth-buttons">
+                        <a href="login-new.html" class="btn btn-outline">Entrar</a>
+                        <a href="cadastro-new.html" class="btn btn-primary">Começar Agora</a>
+                    </div>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle hidden-desktop" id="mobile-menu-toggle" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden" id="mobile-menu">
+            <div class="mobile-menu-content">
+                <div class="mobile-search">
+                    <div class="search-container">
+                        <input type="search" class="search-input" placeholder="Buscar cursos..." aria-label="Buscar cursos">
+                        <button type="button" class="search-button" aria-label="Pesquisar">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <nav class="mobile-nav">
+                    <!-- Programming Section -->
+                    <div class="mobile-nav-section">
+                        <button class="mobile-nav-toggle" data-section="programming">
+                            <span class="mobile-nav-icon">💻</span>
+                            <span class="mobile-nav-text">Programação</span>
+                            <svg class="mobile-nav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-nav-submenu" id="mobile-programming">
+                            <a href="programacao-new.html" class="mobile-nav-item active">
+                                <span class="mobile-nav-icon">🎯</span>
+                                <span class="mobile-nav-text">Todos os Cursos</span>
+                                <span class="mobile-nav-badge">Atual</span>
+                            </a>
+                            <a href="Python.html" class="mobile-nav-item">
+                                <span class="mobile-nav-icon">🐍</span>
+                                <span class="mobile-nav-text">Python</span>
+                                <span class="mobile-nav-badge hot">Hot</span>
+                            </a>
+                            <a href="Java.html" class="mobile-nav-item">
+                                <span class="mobile-nav-icon">☕</span>
+                                <span class="mobile-nav-text">Java</span>
+                            </a>
+                            <a href="Csharp.html" class="mobile-nav-item">
+                                <span class="mobile-nav-icon">🔷</span>
+                                <span class="mobile-nav-text">C#</span>
+                            </a>
+                            <a href="Frontend.html" class="mobile-nav-item">
+                                <span class="mobile-nav-icon">🎨</span>
+                                <span class="mobile-nav-text">Frontend</span>
+                                <span class="mobile-nav-badge new">Novo</span>
+                            </a>
+                            <a href="Backend.html" class="mobile-nav-item">
+                                <span class="mobile-nav-icon">⚙️</span>
+                                <span class="mobile-nav-text">Backend</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Other Categories -->
+                    <div class="mobile-nav-section">
+                        <button class="mobile-nav-toggle" data-section="personal">
+                            <span class="mobile-nav-icon">🚀</span>
+                            <span class="mobile-nav-text">Desenvolvimento Pessoal</span>
+                            <svg class="mobile-nav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-nav-submenu" id="mobile-personal">
+                            <a href="desenvolvimentopessoal.html" class="mobile-nav-item">
+                                <span class="mobile-nav-icon">🎯</span>
+                                <span class="mobile-nav-text">Todos os Cursos</span>
+                            </a>
+                            <a href="#" class="mobile-nav-item">
+                                <span class="mobile-nav-icon">🧠</span>
+                                <span class="mobile-nav-text">Produtividade</span>
+                            </a>
+                            <a href="#" class="mobile-nav-item">
+                                <span class="mobile-nav-icon">💼</span>
+                                <span class="mobile-nav-text">Liderança</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-nav-section">
+                        <button class="mobile-nav-toggle" data-section="marketing">
+                            <span class="mobile-nav-icon">📈</span>
+                            <span class="mobile-nav-text">Marketing</span>
+                            <svg class="mobile-nav-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                        <div class="mobile-nav-submenu" id="mobile-marketing">
+                            <a href="marketing.html" class="mobile-nav-item">
+                                <span class="mobile-nav-icon">🎯</span>
+                                <span class="mobile-nav-text">Todos os Cursos</span>
+                            </a>
+                            <a href="#" class="mobile-nav-item">
+                                <span class="mobile-nav-icon">📱</span>
+                                <span class="mobile-nav-text">Marketing Digital</span>
+                            </a>
+                            <a href="#" class="mobile-nav-item">
+                                <span class="mobile-nav-icon">📊</span>
+                                <span class="mobile-nav-text">Analytics</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mobile-nav-divider"></div>
+                    
+                    <!-- Auth buttons -->
+                    <div class="mobile-nav-auth">
+                        <a href="login-new.html" class="mobile-nav-item auth">
+                            <span class="mobile-nav-icon">🔓</span>
+                            <span class="mobile-nav-text">Entrar</span>
+                        </a>
+                        <a href="cadastro-new.html" class="mobile-nav-item auth primary">
+                            <span class="mobile-nav-icon">🚀</span>
+                            <span class="mobile-nav-text">Começar Agora</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="login-main">
+        <div class="login-container">
+            <!-- Left Side - Hero Section -->
+            <div class="login-hero">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span>🚀 Nova Plataforma</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Bem-vindo à <br>
+                        <span class="hero-highlight">Melhor Plataforma</span><br>
+                        de Cursos Online
+                    </h1>
+                    <p class="hero-description">
+                        Transforme sua carreira com nossos cursos desenvolvidos por especialistas. 
+                        Aprenda no seu ritmo e conquiste suas metas profissionais.
+                    </p>
+                    
+                    <!-- Features List -->
+                    <div class="hero-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">✨</div>
+                            <span>Certificados Reconhecidos</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🎯</div>
+                            <span>Conteúdo Atualizado</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">💡</div>
+                            <span>Suporte Especializado</span>
+                        </div>
+                    </div>
+
+                    <!-- Animated Phrases -->
+                    <div class="animated-phrases">
+                        <p id="dynamic-phrase" class="dynamic-text">Transforme seu futuro hoje</p>
+                    </div>
+                </div>
+                
+                <!-- Background Elements -->
+                <div class="hero-bg-elements">
+                    <div class="bg-circle bg-circle-1"></div>
+                    <div class="bg-circle bg-circle-2"></div>
+                    <div class="bg-circle bg-circle-3"></div>
+                </div>
+            </div>
+
+            <!-- Right Side - Login Form -->
+            <div class="login-form-section">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2 class="form-title">Entrar na Conta</h2>
+                        <p class="form-subtitle">Digite suas credenciais para acessar sua conta</p>
+                    </div>
+
+                    <!-- Alert Messages -->
+                    <div id="alert-container" class="alert-container" role="alert" aria-live="polite"></div>
+
+                    <!-- Login Form -->
+                    <form class="login-form" action="assets/php/Login.php" method="post" novalidate>
+                        <div class="form-group">
+                            <label for="email" class="form-label">
+                                <span class="label-text">E-mail</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    class="form-input" 
+                                    placeholder="seu@email.com"
+                                    required
+                                    autocomplete="email"
+                                    aria-describedby="email-error"
+                                >
+                                <div class="input-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div id="email-error" class="form-error" aria-live="polite"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="senha" class="form-label">
+                                <span class="label-text">Senha</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="senha" 
+                                    name="senha" 
+                                    class="form-input" 
+                                    placeholder="Digite sua senha"
+                                    required
+                                    autocomplete="current-password"
+                                    aria-describedby="senha-error"
+                                >
+                                <button type="button" class="password-toggle" aria-label="Mostrar/ocultar senha">
+                                    <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5S21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12S9.24 7 12 7S17 9.24 17 12S14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div id="senha-error" class="form-error" aria-live="polite"></div>
+                        </div>
+
+                        <!-- Remember & Forgot -->
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="remember" class="checkbox-input">
+                                <span class="checkbox-custom"></span>
+                                <span class="checkbox-text">Lembrar de mim</span>
+                            </label>
+                            <a href="Esqueceusenha.html" class="forgot-link">Esqueceu a senha?</a>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-lg form-submit">
+                            <span class="btn-text">Entrar</span>
+                            <div class="btn-spinner hidden">
+                                <div class="spinner"></div>
+                            </div>
+                        </button>
+
+                        <!-- Divider -->
+                        <div class="form-divider">
+                            <span>ou</span>
+                        </div>
+
+                        <!-- Social Login -->
+                        <div class="social-login">
+                            <button type="button" class="btn btn-outline social-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24">
+                                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                                </svg>
+                                Continuar com Google
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Sign Up Link -->
+                    <div class="form-footer">
+                        <p class="signup-text">
+                            Não tem uma conta? 
+                            <a href="Cadastro.html" class="signup-link">Criar conta gratuita</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay hidden">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Verificando suas credenciais...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="src/js/utils.js"></script>
+    <script src="src/js/auth.js"></script>
+    <script src="src/js/login.js"></script>
+    <script src="src/js/auth-ui.js"></script>
+</body>
+</html>

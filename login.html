@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <style></style>
+</head>
+<body>
+    <main>
+        <div class="frases">
+            <h1>Bem-vindo à Melhor plataforma de cursos online</h1>
+            <p id="frase" class="fade-in">Melhor plataforma de cursos</p> 
+        </div>
+    </main>
+    <aside>
+        <div class="login-form">
+            <h1>Entrar</h1>
+            <form action="assets/php/Login.php" method="post">
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Digite seu email..." required>
+                
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" placeholder="Digite sua senha..." required>
+                
+                <p><a href="Esqueceusenha.html">Esqueceu sua senha?</a></p>
+                <input type="submit" value="Entrar"> 
+                <p class="Inscreva-se">Não tem uma conta? <a href="Cadastro.html" id="inscrever-se">Inscreva-se aqui</a></p>
+            </form>
+        </div>
+        </aside>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

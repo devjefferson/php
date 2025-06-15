@@ -1,0 +1,178 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+/* Estilos do Header */
+header {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+header nav {
+    display: flex;
+    align-items: center;
+}
+header nav a {
+    color: #fff;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+header .cta {
+    background-color: #f9f9f9;
+    color: #007BFF;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* Barra de Pesquisa */
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+.search-bar input[type="text"] {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+.search-bar button {
+    background-color: #f9f9f9;
+    color: #007BFF;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.search-bar button:hover {
+    background-color: #e0e0e0;
+}
+/* Dropdown menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #007BFF;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+.dropdown-content a {
+    color: #fff; /* Cor do texto branco */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #0056b3;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover a {
+    background-color: #0056b3;
+}
+/* Seção Hero */
+.hero {
+    background-color: #f9f9f9;
+    padding-top: 30px;
+    text-align: center;
+}
+.hero img {
+    width: 100%;
+    height: auto;
+}
+/* Seção de Cursos */
+.cursos {
+    padding: 50px 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+.cursos h2 {
+    color: #007BFF;
+    font-size: 36px;
+}
+.cursos .cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+.cursos .card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    margin-bottom: 20px;
+}
+.cursos .card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+.cursos .card h3 {
+    color: #007BFF;
+    margin: 20px 0 10px;
+    font-size: 24px;
+}
+.cursos .card p {
+    color: #707070;
+}
+.cursos .card .cta {
+    background-color: #007BFF;
+    color: #f9f9f9;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* Seção Quem Somos */
+.sobre {
+    background-color: #007BFF;
+    color: #f9f9f9;
+    padding: 50px;
+    text-align: center;
+}
+.sobre h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.sobre p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .cursos .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    .cursos .card {
+        width: 80%;
+    }
+    header {
+        flex-direction: column;
+    }
+    header nav {
+        margin-top: 10px;
+    }
+}

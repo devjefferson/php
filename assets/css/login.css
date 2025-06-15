@@ -1,0 +1,59 @@
+.login-form {
+    background-color: #ffffff; /* Cor de fundo do formulário */
+    padding: 2rem; /* Espaçamento interno */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra do formulário */
+    max-width: 400px; /* Largura máxima do formulário */
+    width: 100%; /* Largura total para telas menores */
+    margin: auto; /* Centraliza o formulário horizontalmente */
+}
+
+.login-form h1 {
+    text-align: center; /* Centraliza o título */
+    font-size: 24px; /* Tamanho do texto */
+    margin-bottom: 1.5rem; /* Margem inferior */
+    color: #333333; /* Cor do texto */
+}
+
+/* Estilos para os campos de entrada */
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form input[type="submit"] {
+    width: 100%; /* Largura total */
+    padding: 10px; /* Espaçamento interno */
+    margin-top: 10px; /* Margem superior */
+    margin-bottom: 15px; /* Margem inferior */
+    border: 1px solid #ccc; /* Borda do campo */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+/* Estilos para o botão de envio */
+.login-form input[type="submit"] {
+    background-color: #00A8FF; /* Cor do botão */
+    color: white; /* Cor do texto do botão */
+    font-weight: bold; /* Texto em negrito */
+    border: none; /* Sem borda */
+    cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+    transition: background-color 0.3s ease; /* Transição suave na cor */
+}
+
+.login-form input[type="submit"]:hover {
+    background-color: #333333; /* Cor ao passar o mouse */
+}
+
+/* Estilos para links */
+.login-form a {
+    color: #00A8FF; /* Cor do link */
+    text-decoration: none; /* Remove sublinhado */
+}
+
+.login-form a:hover {
+    text-decoration: underline; /* Sublinha ao passar o mouse */
+}
+
+/* Estilo para a mensagem de inscrição */
+.login-form p {
+    text-align: center; /* Centraliza o texto */
+    margin-top: 10px; /* Margem superior */
+}
