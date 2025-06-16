@@ -29,8 +29,12 @@ if (!isset($_POST['email']) || !isset($_POST['senha'])) {
     exit;
 }
 
-// Configurações do banco
-require_once 'Config.php';
+// Configurações do banco de dados
+$servername = "database-2.cluxzvykkdac.us-east-1.rds.amazonaws.com";
+$username = "admin";
+$password = "adminadmin";
+$database = "azzo";
+$port = 3306;
 
 try {
     error_log("Tentando conectar ao banco de dados...");
